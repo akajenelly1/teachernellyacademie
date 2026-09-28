@@ -1,0 +1,9 @@
+{
+  "name": "teacher-nelly-academy-production",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "@supabase/supabase-js": "^2.57.0"
+  },
+  "version": "2.0.0"
+}

@@ -1,0 +1,2 @@
+import {json,requireAdmin} from "./_shared.mjs";
+export async function handler(event){try{const u=await requireAdmin(event);return json({ok:true,email:u.email})}catch(e){return json({ok:false,message:e.message},403)}}

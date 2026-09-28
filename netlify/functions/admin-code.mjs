@@ -1,0 +1,3 @@
+import crypto from "node:crypto";
+import {json,requireAdmin,sbAdmin,parseBody} from "./_shared.mjs";
+export async function handler(event){try{await requireAdmin(event);const b=parseBody(event),days=Math.max(1,Number(b.days||30)),code=`TN-${crypto.randomBytes(5).toString("hex").toUpperCase()}`;const {error}=await sbAdmin().from("vip_codes").insert({code,plan:b.plan||"manual",days});if(error)throw error;return json({ok:true,code,message:`New VIP code: ${code}`})}catch(e){return json({ok:false,message:e.message||"Could not generate code"},403)}}
